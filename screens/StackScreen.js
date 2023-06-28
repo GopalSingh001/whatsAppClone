@@ -1,19 +1,40 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './stack/HomeScreen';
-import ChatsScreen from './stack/ChatScreen';
 
-const Stacks=createStackNavigator();
+import ChatsScreen from './stack/ChatScreen';
+import ContactsScreen from './ContactScreen';
+import Navigator from '../components/Navigator';
+
+const Stack = createStackNavigator();
 
 const StackScreen = () => {
   return (
-     <Stacks.Navigator initialRouteName='Home'>
-        <Stacks.Screen name='Contacts' component={HomeScreen}/>
-        <Stacks.Screen name='Chats' component={ChatsScreen}/>
-
-     </Stacks.Navigator>
+    <Stack.Navigator
+      screenOptions={({ route }) => ({
+        headerStyle: {
+          backgroundColor: 'gray',
+          borderBottomColor: 'black',
+          borderWidth: 0.5,
+        },
+        headerTitleStyle: {
+          fontSize: 20,
+          color: 'white',
+          padding: 10,
+          paddingStart: 20,
+        },
+        headerTitle: getHeaderTitle(route),
+      })}
+    >
+      <Stack.Screen name="WhatsApp" component={Navigator} options={{ headerShown: true }} />
+      <Stack.Screen name="Chats" component={ChatsScreen} />
+    </Stack.Navigator>
   );
-}
+};
+
+const getHeaderTitle = (route) => {
+  const { params } = route;
+  const contactName = params && params.contactName ? params.contactName : 'WhatsApp';
+  return contactName;
+};
 
 export default StackScreen;
