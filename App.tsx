@@ -9,8 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import {Text} from 'react-native'
 import Navigator from './components/Navigator';
- 
- 
+import 'react-native-gesture-handler';
 
  
 function App(): JSX.Element {
