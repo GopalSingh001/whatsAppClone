@@ -1,35 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
 
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import {Text} from 'react-native'
-import Navigator from './components/Navigator';
 import 'react-native-gesture-handler';
+import StackScreen from './screens/StackScreen';
 
- 
-function App(): JSX.Element {
-
-
+const App = () => {
   return (
-
     <NavigationContainer>
-      <Text style={{
-        fontSize:20,
-        borderWidth:0.5,
-        color:"white",
-        backgroundColor:'gray',
-        borderBottomColor:"black",
-        padding:10,
-        paddingStart:20
-      }}>WhatsApp</Text>
-      <Navigator/>
+      <StackScreen />
     </NavigationContainer>
-
   );
 }
 export default App;
