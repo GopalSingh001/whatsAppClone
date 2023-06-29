@@ -1,12 +1,9 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
 import ContactScreen from '../screens/ContactScreen';
- 
 import HomeScreen from '../screens/stack/HomeScreen';
 
 const Tabs = createMaterialTopTabNavigator();
-
 const Navigator = () => {
   return (
     <Tabs.Navigator
@@ -16,7 +13,6 @@ const Navigator = () => {
         tabBarIndicatorStyle: { backgroundColor: "#25D366" },
         tabBarLabelStyle: { fontSize: 13, fontWeight: 'bold' },
         tabBarStyle: { backgroundColor: "gray", borderColor: 'green' },
-   
       }}
     >
       <Tabs.Screen
@@ -29,7 +25,6 @@ const Navigator = () => {
         component={ContactScreen}
         options={{ tabBarLabel: 'Contacts' }}
       />
-
     </Tabs.Navigator>
   );
 }

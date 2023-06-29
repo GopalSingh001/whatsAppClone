@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, PermissionsAndroid, Image, TouchableOpacity } from 'react-native';
 import Contacts from 'react-native-contacts';
 
-
 const ContactsScreen = ({ navigation }) => {
     const [contacts, setContacts] = useState([]);
-
     useEffect(() => {
         requestContactsPermission();
     }, []);
-
     const requestContactsPermission = async () => {
         try {
             const granted = await PermissionsAndroid.request(
@@ -30,7 +27,6 @@ const ContactsScreen = ({ navigation }) => {
             console.log(error);
         }
     };
-
     const fetchContacts = () => {
         Contacts.getAll()
             .then((contacts) => {
@@ -40,24 +36,20 @@ const ContactsScreen = ({ navigation }) => {
                 console.log(error);
             });
     };
-
     const handleContactPress = (contactName) => {
         navigation.navigate('Chats', { contactName });
-      };
-    
-
+    };
     return (
         <View style={{
             height: '100%'
             , backgroundColor: '#444c38'
         }}>
-
             <FlatList
                 data={contacts}
                 keyExtractor={(item) => item.recordID}
                 renderItem={({ item }) => (
                     <TouchableOpacity
-                        onPress={()=>handleContactPress(item.displayName)}
+                        onPress={() => handleContactPress(item.displayName)}
                     >
                         <View style={{
                             width: "100%",
@@ -69,21 +61,17 @@ const ContactsScreen = ({ navigation }) => {
                             flexDirection: 'row',
                             gap: 8,
                             alignItems: 'center'
-
                         }}
                         >
-
                             <View style={{
                                 borderRadius: 50,
                                 backgroundColor: 'black',
                                 padding: 9,
-
                             }}
                             >
                                 <Image style={{
                                     height: 27,
                                     width: 27,
-
                                 }} source={require('../images/contact.png')} />
                             </View>
                             <Text
@@ -91,17 +79,12 @@ const ContactsScreen = ({ navigation }) => {
                                     fontSize: 21,
                                     color: 'white'
                                 }}>{item.displayName}</Text>
-
                         </View>
                     </TouchableOpacity>
                 )}
             />
-             
         </View>
     );
 };
-
 export default ContactsScreen;
 
-
- 

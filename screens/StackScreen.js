@@ -1,12 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-
 import ChatsScreen from './stack/ChatScreen';
-import ContactsScreen from './ContactScreen';
 import Navigator from '../components/Navigator';
 
 const Stack = createStackNavigator();
-
 const StackScreen = () => {
   return (
     <Stack.Navigator
@@ -20,21 +17,19 @@ const StackScreen = () => {
           fontSize: 20,
           color: 'white',
           padding: 10,
-          paddingStart: 20,
         },
         headerTitle: getHeaderTitle(route),
       })}
     >
-      <Stack.Screen name="WhatsApp" component={Navigator} options={{ headerShown: true }} />
+      <Stack.Screen name="WhatsApp" component={Navigator}/>
       <Stack.Screen name="Chats" component={ChatsScreen} />
     </Stack.Navigator>
   );
 };
 
 const getHeaderTitle = (route) => {
-  const { params } = route;
+  const { params } = route; 
   const contactName = params && params.contactName ? params.contactName : 'WhatsApp';
   return contactName;
 };
-
 export default StackScreen;
